@@ -11,7 +11,7 @@ const devices = [
     status: 'on',
     room: 'Kitchen',
     usedSince: '07:30',
-    image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=300&h=300&fit=crop',
+    image: '/images/devices/smart-oven.jpg',
   },
   {
     id: 'k2',
@@ -20,7 +20,7 @@ const devices = [
     status: 'off',
     room: 'Kitchen',
     usedSince: '06:15',
-    image: 'https://images.unsplash.com/photo-1520970014086-2208d157c9e2?w=300&h=300&fit=crop',
+    image: '/images/devices/coffee-maker.jpg',
   },
   {
     id: 'k3',
@@ -29,7 +29,7 @@ const devices = [
     status: 'on',
     room: 'Kitchen',
     usedSince: '05:45',
-    image: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=300&h=300&fit=crop',
+    image: '/images/devices/kitchen-lights.jpg',
   },
 ];
 
@@ -41,11 +41,21 @@ export function Kitchen() {
   return (
     <div className="space-y-8">
       <div className="aspect-video rounded-3xl overflow-hidden relative bg-gray-900">
-        <img
-          src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&h=800&fit=crop"
-          alt="Kitchen"
-          className="w-full h-full object-cover opacity-90"
-        />
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/images/rooms/kitchen.jpg"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/rooms/kitchen.jpg"
+          />
+          <img
+            src="/images/rooms/kitchen.jpg"
+            alt="Kitchen"
+            className="w-full h-full object-cover opacity-90"
+          />
+        </picture>
         
         <LiveIndicator />
         
@@ -57,7 +67,7 @@ export function Kitchen() {
         />
       </div>
       
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {devices.map(device => (
           <DeviceCard 
             key={device.id} 

@@ -11,7 +11,7 @@ const devices = [
     status: 'on',
     room: 'Bathroom',
     usedSince: '07:00',
-    image: 'https://images.unsplash.com/photo-1617103996702-96ff29b1c467?w=300&h=300&fit=crop',
+    image: '/images/devices/smart-mirror.jpg',
   },
   {
     id: 'b2',
@@ -20,7 +20,7 @@ const devices = [
     status: 'on',
     room: 'Bathroom',
     usedSince: '06:30',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=300&h=300&fit=crop',
+    image: '/images/devices/heated-floor.jpg',
   },
   {
     id: 'b3',
@@ -29,7 +29,7 @@ const devices = [
     status: 'off',
     room: 'Bathroom',
     usedSince: '06:45',
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=300&h=300&fit=crop',
+    image: '/images/devices/towel-warmer.jpg',
   },
 ];
 
@@ -41,11 +41,21 @@ export function Bathroom() {
   return (
     <div className="space-y-8">
       <div className="aspect-video rounded-3xl overflow-hidden relative bg-gray-900">
-        <img
-          src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=800&fit=crop"
-          alt="Bathroom"
-          className="w-full h-full object-cover opacity-90"
-        />
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/images/rooms/bathroom.jpg"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/rooms/bathroom.jpg"
+          />
+          <img
+            src="/images/rooms/bathroom.jpg"
+            alt="Bathroom"
+            className="w-full h-full object-cover opacity-90"
+          />
+        </picture>
         
         <LiveIndicator />
         
@@ -57,7 +67,7 @@ export function Bathroom() {
         />
       </div>
       
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {devices.map(device => (
           <DeviceCard 
             key={device.id} 

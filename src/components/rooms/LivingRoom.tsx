@@ -13,7 +13,7 @@ const initialDevices: Device[] = [
     status: 'on',
     room: 'Living Room',
     usedSince: '06:20',
-    image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=300&h=300&fit=crop',
+    image: '/images/devices/living-lamp.jpg',
   },
   {
     id: '2',
@@ -22,7 +22,7 @@ const initialDevices: Device[] = [
     status: 'on',
     room: 'Living Room',
     usedSince: '08:30',
-    image: 'https://images.unsplash.com/photo-1610438235354-a6ae5528385c?w=300&h=300&fit=crop',
+    image: '/images/devices/homepod.jpg',
   },
   {
     id: '3',
@@ -33,7 +33,7 @@ const initialDevices: Device[] = [
     usedSince: '10:00',
     value: 30,
     unit: '%',
-    image: 'https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?w=300&h=300&fit=crop',
+    image: '/images/devices/air-humidifier.jpg',
   },
 ];
 
@@ -51,11 +51,21 @@ export function LivingRoom() {
   return (
     <div className="space-y-8">
       <div className="aspect-video rounded-3xl overflow-hidden relative bg-gray-900">
-        <img
-          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop"
-          alt="Living Room"
-          className="w-full h-full object-cover opacity-90"
-        />
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/images/rooms/living-room.jpg"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/rooms/living-room.jpg"
+          />
+          <img
+            src="/images/rooms/living-room.jpg"
+            alt="Living Room"
+            className="w-full h-full object-cover opacity-90"
+          />
+        </picture>
         
         <LiveIndicator />
         
@@ -69,13 +79,13 @@ export function LivingRoom() {
         <MusicPlayer
           songTitle="Oops! I did it again"
           artist="BRITNEY SPEARS"
-          albumArt="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=100&h=100&fit=crop"
+          albumArt="/images/album-art/britney.jpg"
           currentTime="1:31"
           duration="3:02"
         />
       </div>
       
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {devices.map(device => (
           <DeviceCard 
             key={device.id} 

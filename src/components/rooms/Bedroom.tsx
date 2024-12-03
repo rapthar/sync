@@ -11,7 +11,7 @@ const devices = [
     status: 'off',
     room: 'Bedroom',
     usedSince: '22:00',
-    image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=300&h=300&fit=crop',
+    image: '/images/devices/bedside-lamp.jpg',
   },
   {
     id: 'br2',
@@ -20,7 +20,7 @@ const devices = [
     status: 'on',
     room: 'Bedroom',
     usedSince: '20:00',
-    image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=300&h=300&fit=crop',
+    image: '/images/devices/air-purifier.jpg',
   },
   {
     id: 'br3',
@@ -29,7 +29,7 @@ const devices = [
     status: 'on',
     room: 'Bedroom',
     usedSince: '06:00',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300&h=300&fit=crop',
+    image: '/images/devices/smart-curtains.jpg',
   },
 ];
 
@@ -41,11 +41,21 @@ export function Bedroom() {
   return (
     <div className="space-y-8">
       <div className="aspect-video rounded-3xl overflow-hidden relative bg-gray-900">
-        <img
-          src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&h=800&fit=crop"
-          alt="Bedroom"
-          className="w-full h-full object-cover opacity-90"
-        />
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/images/rooms/bedroom.jpg"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/rooms/bedroom.jpg"
+          />
+          <img
+            src="/images/rooms/bedroom.jpg"
+            alt="Bedroom"
+            className="w-full h-full object-cover opacity-90"
+          />
+        </picture>
         
         <LiveIndicator />
         
@@ -57,7 +67,7 @@ export function Bedroom() {
         />
       </div>
       
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {devices.map(device => (
           <DeviceCard 
             key={device.id} 

@@ -11,7 +11,7 @@ const devices = [
     status: 'on',
     room: 'Terrace',
     usedSince: '19:00',
-    image: 'https://images.unsplash.com/photo-1595514736216-f8977daa8fcd?w=300&h=300&fit=crop',
+    image: '/images/devices/terrace-lights.jpg',
   },
   {
     id: 't2',
@@ -20,7 +20,7 @@ const devices = [
     status: 'off',
     room: 'Terrace',
     usedSince: '18:30',
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=300&h=300&fit=crop',
+    image: '/images/devices/outdoor-speakers.jpg',
   },
   {
     id: 't3',
@@ -29,7 +29,7 @@ const devices = [
     status: 'on',
     room: 'Terrace',
     usedSince: '19:15',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop',
+    image: '/images/devices/heat-lamp.jpg',
   },
 ];
 
@@ -41,11 +41,21 @@ export function Terrace() {
   return (
     <div className="space-y-8">
       <div className="aspect-video rounded-3xl overflow-hidden relative bg-gray-900">
-        <img
-          src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop"
-          alt="Terrace"
-          className="w-full h-full object-cover opacity-90"
-        />
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/images/rooms/terrace.jpg"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/rooms/terrace.jpg"
+          />
+          <img
+            src="/images/rooms/terrace.jpg"
+            alt="Terrace"
+            className="w-full h-full object-cover opacity-90"
+          />
+        </picture>
         
         <LiveIndicator />
         
@@ -57,7 +67,7 @@ export function Terrace() {
         />
       </div>
       
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {devices.map(device => (
           <DeviceCard 
             key={device.id} 

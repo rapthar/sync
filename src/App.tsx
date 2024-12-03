@@ -40,14 +40,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      <Sidebar />
+    <div className="min-h-screen bg-gray-950 text-white flex">
+      <div className="hidden md:block">
+        <Sidebar />
+      </div>
       
-      <main className="ml-20 p-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-12 gap-8">
+      <main className="flex-1 p-4 md:p-6 lg:p-8 md:ml-20">
+        <div className="max-w-7xl mx-auto space-y-6 md:space-y-8">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8">
             {/* Left Column */}
-            <div className="col-span-3 space-y-8 h-[calc(100vh-4rem)]">
+            <div className="lg:col-span-3 space-y-4 md:space-y-6 lg:space-y-8 lg:h-[calc(100vh-4rem)]">
               <WeatherWidget data={weatherData} />
               <div className="flex-grow">
                 <EnergyPanel />
@@ -55,8 +57,8 @@ function App() {
             </div>
             
             {/* Main Content */}
-            <div className="col-span-9 space-y-8">
-              <div className="flex items-center justify-between">
+            <div className="lg:col-span-9 space-y-6 md:space-y-8">
+              <div className="flex items-center justify-between mt-6 lg:mt-0">
                 <h1 className="text-3xl font-bold">Hi Ann!</h1>
                 <button className="w-10 h-10 rounded-full bg-gray-800 overflow-hidden">
                   <img

@@ -20,19 +20,19 @@ interface RoomSelectorProps {
 
 export function RoomSelector({ selectedRoom, onRoomChange }: RoomSelectorProps) {
   return (
-    <div className="flex gap-2 overflow-x-auto pb-2 w-full">
+    <div className="flex gap-2 overflow-x-auto pb-2 w-full scrollbar-thin">
       {rooms.map(({ id, icon: Icon }) => (
         <button
           key={id}
           onClick={() => onRoomChange(id)}
-          className={`px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors flex items-center gap-2 flex-shrink-0 ${
+          className={`min-w-[44px] h-11 px-3 md:px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors flex items-center gap-2 flex-shrink-0 touch-manipulation ${
             id === selectedRoom
               ? 'bg-white text-gray-900'
               : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
           }`}
         >
-          <Icon size={16} />
-          {id}
+          <Icon size={18} className="flex-shrink-0" />
+          <span className="hidden sm:inline">{id}</span>
         </button>
       ))}
     </div>
